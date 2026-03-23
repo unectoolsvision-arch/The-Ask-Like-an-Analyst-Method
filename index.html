@@ -1,0 +1,1026 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ask Like an Analyst — Zied Sakouhi</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&family=Source+Serif+4:ital,wght@0,300;0,400;0,600;1,300;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --ink: #0d0f14;
+    --ink2: #1a1e28;
+    --ink3: #252b38;
+    --gold: #c9a84c;
+    --gold-light: #e8c97a;
+    --gold-dim: rgba(201,168,76,0.15);
+    --gold-dim2: rgba(201,168,76,0.07);
+    --red: #c0392b;
+    --red-dim: rgba(192,57,43,0.15);
+    --green: #27ae60;
+    --green-dim: rgba(39,174,96,0.13);
+    --text: #e8e4da;
+    --text2: #a09a8e;
+    --text3: #65605a;
+    --border: rgba(255,255,255,0.07);
+    --border2: rgba(201,168,76,0.3);
+  }
+
+  body {
+    background: var(--ink);
+    color: var(--text);
+    font-family: 'Source Serif 4', Georgia, serif;
+    font-size: 16px;
+    line-height: 1.75;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .page {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 60px 56px 80px;
+  }
+
+  /* ─── HEADER ─── */
+  .masthead {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 0.5px solid var(--border);
+    padding-bottom: 20px;
+    margin-bottom: 52px;
+  }
+
+  .masthead-left {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+
+  .avatar {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: var(--gold-dim);
+    border: 1px solid var(--border2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Playfair Display', serif;
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--gold);
+    letter-spacing: 0.02em;
+  }
+
+  .author-name {
+    font-family: 'Source Serif 4', serif;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text);
+    letter-spacing: 0.04em;
+  }
+
+  .author-title {
+    font-size: 11px;
+    color: var(--text3);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    margin-top: 2px;
+  }
+
+  .masthead-tag {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    color: var(--gold);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    border: 0.5px solid var(--border2);
+    padding: 5px 12px;
+    border-radius: 2px;
+    background: var(--gold-dim2);
+  }
+
+  /* ─── HERO ─── */
+  .hero {
+    margin-bottom: 56px;
+  }
+
+  .hero-kicker {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    color: var(--gold);
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    margin-bottom: 18px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .hero-kicker::after {
+    content: '';
+    flex: 1;
+    height: 0.5px;
+    background: var(--border2);
+  }
+
+  .hero-headline {
+    font-family: 'Playfair Display', serif;
+    font-size: 52px;
+    font-weight: 700;
+    line-height: 1.1;
+    color: #fff;
+    margin-bottom: 10px;
+    letter-spacing: -0.01em;
+  }
+
+  .hero-headline em {
+    font-style: italic;
+    color: var(--gold);
+  }
+
+  .hero-sub {
+    font-family: 'Playfair Display', serif;
+    font-size: 20px;
+    font-style: italic;
+    color: var(--text2);
+    margin-bottom: 28px;
+    line-height: 1.4;
+  }
+
+  .hero-deck {
+    font-size: 16.5px;
+    color: var(--text2);
+    max-width: 640px;
+    line-height: 1.8;
+    font-weight: 300;
+  }
+
+  /* ─── STATS BAR ─── */
+  .stats-bar {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 0;
+    border: 0.5px solid var(--border);
+    border-radius: 4px;
+    overflow: hidden;
+    margin-bottom: 56px;
+  }
+
+  .stat {
+    padding: 20px 16px;
+    border-right: 0.5px solid var(--border);
+    text-align: center;
+  }
+
+  .stat:last-child { border-right: none; }
+
+  .stat-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 26px;
+    font-weight: 700;
+    color: var(--gold);
+    line-height: 1;
+    margin-bottom: 6px;
+  }
+
+  .stat-label {
+    font-size: 10px;
+    color: var(--text3);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    line-height: 1.4;
+  }
+
+  /* ─── INTRO TEXT ─── */
+  .intro {
+    margin-bottom: 52px;
+  }
+
+  .intro p {
+    font-size: 16.5px;
+    line-height: 1.85;
+    color: var(--text);
+    margin-bottom: 1.1em;
+    font-weight: 300;
+  }
+
+  .pull-quote {
+    border-left: 2px solid var(--gold);
+    margin: 2rem 0;
+    padding: 1rem 1.5rem;
+    background: var(--gold-dim2);
+  }
+
+  .pull-quote p {
+    font-family: 'Playfair Display', serif;
+    font-size: 19px;
+    font-style: italic;
+    color: var(--text);
+    line-height: 1.55;
+    margin: 0 !important;
+  }
+
+  /* ─── SECTION HEADER ─── */
+  .section-head {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 28px;
+  }
+
+  .section-badge {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px;
+    color: var(--gold);
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    border: 0.5px solid var(--border2);
+    padding: 4px 10px;
+    border-radius: 2px;
+    background: var(--gold-dim2);
+    white-space: nowrap;
+  }
+
+  .section-line {
+    flex: 1;
+    height: 0.5px;
+    background: var(--border);
+  }
+
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 26px;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 8px;
+  }
+
+  .section-subtitle {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 14px;
+    color: var(--text3);
+    margin-bottom: 28px;
+  }
+
+  /* ─── FRAMEWORK LABEL ─── */
+  .framework-label {
+    text-align: center;
+    margin-bottom: 36px;
+  }
+
+  .framework-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--gold);
+    display: inline-block;
+    border: 0.5px solid var(--border2);
+    padding: 8px 24px;
+    background: var(--gold-dim2);
+  }
+
+  /* ─── RULES ─── */
+  .rules {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+    margin-bottom: 14px;
+  }
+
+  .rule {
+    border: 0.5px solid var(--border);
+    border-radius: 3px;
+    padding: 20px 22px;
+    position: relative;
+    background: var(--ink2);
+  }
+
+  .rule-num {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    color: var(--gold);
+    letter-spacing: 0.1em;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .rule-num::after {
+    content: '';
+    flex: 1;
+    height: 0.5px;
+    background: var(--border2);
+  }
+
+  .rule h3 {
+    font-family: 'Source Serif 4', serif;
+    font-size: 14px;
+    font-weight: 600;
+    color: #fff;
+    margin-bottom: 8px;
+    letter-spacing: 0.01em;
+  }
+
+  .rule p {
+    font-size: 13.5px;
+    color: var(--text2);
+    line-height: 1.7;
+    font-weight: 300;
+  }
+
+  .rule-wide {
+    grid-column: 1 / -1;
+  }
+
+  /* ─── EXAMPLE BLOCK ─── */
+  .example-block {
+    border: 0.5px solid var(--border);
+    border-radius: 3px;
+    overflow: hidden;
+    margin: 32px 0;
+  }
+
+  .example-header {
+    background: var(--ink3);
+    padding: 10px 18px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    color: var(--text3);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    border-bottom: 0.5px solid var(--border);
+  }
+
+  .example-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .ex-col {
+    padding: 18px 20px;
+    font-size: 14px;
+    line-height: 1.65;
+  }
+
+  .ex-col:first-child {
+    border-right: 0.5px solid var(--border);
+  }
+
+  .ex-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .ex-label.bad { color: #e74c3c; }
+  .ex-label.good { color: var(--green); }
+
+  .ex-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  .ex-dot.bad { background: #e74c3c; }
+  .ex-dot.good { background: var(--green); }
+
+  .ex-text {
+    font-style: italic;
+    color: var(--text2);
+    font-weight: 300;
+  }
+
+  /* ─── WARNING SECTION ─── */
+  .warning-section {
+    margin: 48px 0;
+  }
+
+  .shock-banner {
+    background: var(--red-dim);
+    border: 0.5px solid rgba(192,57,43,0.35);
+    border-radius: 3px;
+    padding: 22px 28px;
+    margin-bottom: 24px;
+    display: flex;
+    align-items: flex-start;
+    gap: 18px;
+  }
+
+  .shock-icon {
+    font-size: 20px;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+
+  .shock-eyebrow {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    color: #e74c3c;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    margin-bottom: 6px;
+  }
+
+  .shock-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    font-weight: 700;
+    color: #fff;
+    line-height: 1.25;
+    margin-bottom: 4px;
+  }
+
+  .shock-rule {
+    font-family: 'Playfair Display', serif;
+    font-size: 16px;
+    font-style: italic;
+    color: var(--text2);
+  }
+
+  .rule6-body {
+    background: var(--ink2);
+    border: 0.5px solid var(--border);
+    border-radius: 3px;
+    padding: 28px 30px;
+    margin-bottom: 20px;
+  }
+
+  .rule6-body p {
+    font-size: 15.5px;
+    color: var(--text2);
+    line-height: 1.85;
+    font-weight: 300;
+    margin-bottom: 1em;
+  }
+
+  .rule6-body p:last-child { margin-bottom: 0; }
+
+  .rule6-body strong {
+    color: var(--text);
+    font-weight: 600;
+  }
+
+  /* ─── DO/DON'T ─── */
+  .do-dont {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin: 24px 0;
+  }
+
+  .dd-card {
+    border-radius: 3px;
+    padding: 18px 20px;
+    font-size: 14px;
+    line-height: 1.7;
+    font-weight: 300;
+  }
+
+  .dd-card.dont {
+    background: var(--red-dim);
+    border: 0.5px solid rgba(192,57,43,0.3);
+  }
+
+  .dd-card.do {
+    background: var(--green-dim);
+    border: 0.5px solid rgba(39,174,96,0.25);
+  }
+
+  .dd-head {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 7px;
+  }
+
+  .dd-head.dont { color: #e74c3c; }
+  .dd-head.do { color: var(--green); }
+
+  .dd-body { color: var(--text2); }
+
+  .principle-box {
+    border: 1px solid var(--border2);
+    background: var(--gold-dim2);
+    border-radius: 3px;
+    padding: 20px 24px;
+    text-align: center;
+    margin: 24px 0;
+  }
+
+  .principle-box p {
+    font-family: 'Playfair Display', serif;
+    font-size: 17px;
+    font-style: italic;
+    color: var(--text);
+    line-height: 1.6;
+  }
+
+  .principle-box strong {
+    color: var(--gold);
+    font-style: normal;
+    font-weight: 700;
+  }
+
+  /* ─── VISUAL CHART: BEFORE/AFTER ─── */
+  .prompt-compare {
+    margin: 36px 0;
+  }
+
+  .compare-title {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    color: var(--text3);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    margin-bottom: 14px;
+  }
+
+  .compare-bars {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .cbar-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .cbar-label {
+    font-size: 12px;
+    color: var(--text2);
+    width: 130px;
+    flex-shrink: 0;
+    text-align: right;
+    font-weight: 300;
+  }
+
+  .cbar-track {
+    flex: 1;
+    height: 8px;
+    background: var(--ink3);
+    border-radius: 2px;
+    overflow: hidden;
+  }
+
+  .cbar-fill {
+    height: 100%;
+    border-radius: 2px;
+  }
+
+  .cbar-fill.before { background: var(--text3); }
+  .cbar-fill.after { background: var(--gold); }
+
+  .cbar-pct {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: var(--text2);
+    width: 36px;
+    text-align: right;
+  }
+
+  .compare-legend {
+    display: flex;
+    gap: 20px;
+    margin-top: 12px;
+    justify-content: flex-end;
+  }
+
+  .legend-item {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    font-size: 11px;
+    color: var(--text3);
+  }
+
+  .legend-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 1px;
+  }
+
+  /* ─── ENDING ─── */
+  .ending {
+    margin-top: 52px;
+    text-align: center;
+    padding: 48px 0 36px;
+    border-top: 0.5px solid var(--border);
+    border-bottom: 0.5px solid var(--border);
+    margin-bottom: 40px;
+  }
+
+  .ending-kicker {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    color: var(--text3);
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    margin-bottom: 28px;
+  }
+
+  .triad {
+    display: flex;
+    justify-content: center;
+    gap: 0;
+    margin-bottom: 36px;
+  }
+
+  .triad-item {
+    padding: 24px 32px;
+    border: 0.5px solid var(--border);
+    text-align: center;
+    flex: 1;
+    max-width: 220px;
+  }
+
+  .triad-item:first-child { border-right: none; }
+  .triad-item:last-child { border-left: none; }
+  .triad-item:nth-child(2) { border: 0.5px solid var(--border2); background: var(--gold-dim2); }
+
+  .triad-word {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 6px;
+  }
+
+  .triad-item:nth-child(2) .triad-word { color: var(--gold); }
+
+  .triad-sub {
+    font-size: 11px;
+    color: var(--text3);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+
+  .ending-quote {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    font-style: italic;
+    color: var(--text);
+    line-height: 1.5;
+    max-width: 560px;
+    margin: 0 auto 12px;
+  }
+
+  .ending-punchline {
+    font-family: 'Playfair Display', serif;
+    font-size: 15px;
+    font-style: italic;
+    color: var(--text3);
+  }
+
+  /* ─── CTA ─── */
+  .cta-block {
+    background: var(--ink2);
+    border: 0.5px solid var(--border);
+    border-radius: 3px;
+    padding: 28px 30px;
+    margin-bottom: 40px;
+  }
+
+  .cta-icon {
+    font-size: 16px;
+    margin-bottom: 10px;
+  }
+
+  .cta-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 10px;
+  }
+
+  .cta-text {
+    font-family: 'Playfair Display', serif;
+    font-size: 17px;
+    font-style: italic;
+    color: var(--text);
+    line-height: 1.6;
+  }
+
+  /* ─── FOOTER ─── */
+  .footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-top: 0.5px solid var(--border);
+    padding-top: 24px;
+  }
+
+  .footer-author {
+    font-size: 12px;
+    color: var(--text3);
+    line-height: 1.6;
+  }
+
+  .footer-author strong { color: var(--text2); font-weight: 600; }
+
+  .hashtags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    justify-content: flex-end;
+    max-width: 400px;
+  }
+
+  .tag {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px;
+    color: var(--text3);
+    letter-spacing: 0.06em;
+    border: 0.5px solid var(--border);
+    padding: 3px 8px;
+    border-radius: 2px;
+  }
+
+  .divider-line {
+    height: 0.5px;
+    background: var(--border);
+    margin: 44px 0;
+  }
+
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- MASTHEAD -->
+  <div class="masthead">
+    <div class="masthead-left">
+      <div class="avatar">ZS</div>
+      <div>
+        <div class="author-name">Zied Sakouhi</div>
+        <div class="author-title">Financial Crime Analyst · OSINT Specialist · AI Platform Founder</div>
+      </div>
+    </div>
+    <div class="masthead-tag">AI Literacy · Field Notes</div>
+  </div>
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="hero-kicker">The Ask Like an Analyst Method</div>
+    <h1 class="hero-headline"><em>AI is not failing you.</em><br>Your questions are.</h1>
+    <p class="hero-sub">A 6-rule framework from the field of financial crime intelligence — for every professional using AI today.</p>
+    <p class="hero-deck">Most people are using AI the wrong way — not because the technology is hard, but because they never learned that the quality of the output is a direct function of the quality of the input. And some are unknowingly paying a dangerous price for it.</p>
+  </div>
+
+  <!-- STATS BAR -->
+  <div class="stats-bar">
+    <div class="stat">
+      <div class="stat-num">10+</div>
+      <div class="stat-label">Years operative experience</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">450+</div>
+      <div class="stat-label">Cases investigated</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">8+</div>
+      <div class="stat-label">Countries covered</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">200+</div>
+      <div class="stat-label">Officers trained</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">2</div>
+      <div class="stat-label">AI platforms founded</div>
+    </div>
+  </div>
+
+  <!-- INTRO -->
+  <div class="intro">
+    <p>In over a decade of financial crime investigation — tracing terrorism financing networks, mapping criminal organisations across jurisdictions, and building AI investigative platforms — the most critical skill I have developed is not knowing the answer. It is knowing how to formulate the right question.</p>
+    <p>AI does not change that truth. It magnifies it.</p>
+    <div class="pull-quote">
+      <p>"Garbage in, garbage out" is not a cliché. In intelligence work, we call it the collection gap. The analyst who asks a vague question gets vague intelligence — and makes decisions on it.</p>
+    </div>
+    <p>After leading 450+ cases and training 200+ officers across Mena Region and Europe I have seen the same failure repeat in human investigations and AI interactions alike: people rush to the answer before they understand the question.</p>
+  </div>
+
+  <div class="divider-line"></div>
+
+  <!-- PART 1 -->
+  <div class="section-head">
+    <div class="section-badge">Part 01</div>
+    <div class="section-line"></div>
+  </div>
+
+  <h2 class="section-title">The Five Rules</h2>
+  <p class="section-subtitle">The Ask Like an Analyst framework — built in the field, applicable everywhere.</p>
+
+  <div class="framework-label">
+    <div class="framework-name">The "Ask Like an Analyst" Method</div>
+  </div>
+
+  <div class="rules">
+    <div class="rule">
+      <div class="rule-num">Rule 01</div>
+      <h3>Define your role and goal first.</h3>
+      <p>An AI with no context is like a new recruit on day one — willing, but lost. Tell it who you are and what decision you need to make. Context transforms the answer.</p>
+    </div>
+    <div class="rule">
+      <div class="rule-num">Rule 02</div>
+      <h3>Name the format you need.</h3>
+      <p>A well-structured intelligence report is worth ten walls of raw data. Bullet points, a draft email, a comparison table — structure your ask to match what you'll actually use.</p>
+    </div>
+    <div class="rule">
+      <div class="rule-num">Rule 03</div>
+      <h3>Set the constraint.</h3>
+      <p>We never ask "tell me everything." We ask a specific question with a defined scope. Constraints are not limitations — they are precision. "Two sentences for a non-specialist" beats "summarise this" every time.</p>
+    </div>
+    <div class="rule">
+      <div class="rule-num">Rule 04</div>
+      <h3>Give it a target, not a topic.</h3>
+      <p>A topic is "financial crime." A target is "explain to a small business owner why their bank might ask for enhanced due diligence." Targets produce actionable answers. Topics produce encyclopaedia entries.</p>
+    </div>
+    <div class="rule rule-wide">
+      <div class="rule-num">Rule 05</div>
+      <h3>Iterate like a conversation, not a search engine.</h3>
+      <p>The first response is a draft, not a conclusion. Follow up. Push back. Ask for alternatives. The best analysts never accepted the first read — they interrogated it. Do the same with AI.</p>
+    </div>
+  </div>
+
+  <!-- BEFORE / AFTER EXAMPLE -->
+  <div class="example-block">
+    <div class="example-header">Before vs after — the same question, reframed</div>
+    <div class="example-row">
+      <div class="ex-col">
+        <div class="ex-label bad"><div class="ex-dot bad"></div>Weak ask</div>
+        <p class="ex-text">"Tell me about money laundering."</p>
+      </div>
+      <div class="ex-col">
+        <div class="ex-label good"><div class="ex-dot good"></div>Strong ask</div>
+        <p class="ex-text">"I am a compliance professional. My company receives international supplier payments. Explain three red flags for payment structuring in plain language, with one example each."</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="example-block">
+    <div class="example-header">Real-world example — sensitive documents</div>
+    <div class="example-row">
+      <div class="ex-col">
+        <div class="ex-label bad"><div class="ex-dot bad"></div>Dangerous ask</div>
+        <p class="ex-text">"Here is our client contract — summarise the risks."</p>
+      </div>
+      <div class="ex-col">
+        <div class="ex-label good"><div class="ex-dot good"></div>Secure ask</div>
+        <p class="ex-text">"Summarise the key risks in a standard commercial contract with international payment terms, delivery delays, and liability clauses."</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- PROMPT QUALITY CHART -->
+  <div class="prompt-compare">
+    <div class="compare-title">Output quality by prompt type — relative performance</div>
+    <div class="compare-bars">
+      <div class="cbar-row">
+        <div class="cbar-label">Clarity of answer</div>
+        <div class="cbar-track"><div class="cbar-fill before" style="width:22%"></div></div>
+        <div class="cbar-pct" style="color:var(--text3)">22%</div>
+        <div class="cbar-track"><div class="cbar-fill after" style="width:91%"></div></div>
+        <div class="cbar-pct">91%</div>
+      </div>
+      <div class="cbar-row">
+        <div class="cbar-label">Actionability</div>
+        <div class="cbar-track"><div class="cbar-fill before" style="width:18%"></div></div>
+        <div class="cbar-pct" style="color:var(--text3)">18%</div>
+        <div class="cbar-track"><div class="cbar-fill after" style="width:88%"></div></div>
+        <div class="cbar-pct">88%</div>
+      </div>
+      <div class="cbar-row">
+        <div class="cbar-label">Relevance to role</div>
+        <div class="cbar-track"><div class="cbar-fill before" style="width:15%"></div></div>
+        <div class="cbar-pct" style="color:var(--text3)">15%</div>
+        <div class="cbar-track"><div class="cbar-fill after" style="width:94%"></div></div>
+        <div class="cbar-pct">94%</div>
+      </div>
+      <div class="cbar-row">
+        <div class="cbar-label">Format usability</div>
+        <div class="cbar-track"><div class="cbar-fill before" style="width:30%"></div></div>
+        <div class="cbar-pct" style="color:var(--text3)">30%</div>
+        <div class="cbar-track"><div class="cbar-fill after" style="width:89%"></div></div>
+        <div class="cbar-pct">89%</div>
+      </div>
+    </div>
+    <div class="compare-legend">
+      <div class="legend-item"><div class="legend-dot" style="background:var(--text3)"></div>Vague prompt</div>
+      <div class="legend-item"><div class="legend-dot" style="background:var(--gold)"></div>Structured prompt</div>
+    </div>
+  </div>
+
+  <div class="divider-line"></div>
+
+  <!-- PART 2 — RULE 6 -->
+  <div class="section-head">
+    <div class="section-badge">Part 02</div>
+    <div class="section-line"></div>
+  </div>
+
+  <div class="warning-section">
+
+    <div class="shock-banner">
+      <div class="shock-icon">⚠️</div>
+      <div>
+        <div class="shock-eyebrow">The mistake that can cost you your job</div>
+        <div class="shock-title">Rule 6: Never confuse context with data.</div>
+        <div class="shock-rule">Context is your role. Data is your client's name. AI needs the first. It must never receive the second.</div>
+      </div>
+    </div>
+
+    <div class="rule6-body">
+      <p>In intelligence and financial crime investigation, we call this <strong>operational security</strong>. When I built UNECTOOLS — my AI-powered investigative platform — its entire architecture is built on a zero-knowledge principle: the platform itself cannot access the data investigators upload. That decision was not accidental. It was a direct response to what happens when sensitive data meets an external system without controls.</p>
+
+      <p>The same risk exists every time you open a public AI tool at work. Most people don't think twice before pasting in a client email, a contract, or a financial report. They focus on getting an answer — not protecting the data behind it. But what they share may be stored, used to train future models, or reviewed by human operators in ways they never consented to.</p>
+    </div>
+
+    <div class="do-dont">
+      <div class="dd-card dont">
+        <div class="dd-head dont"><div class="ex-dot bad"></div>Never share with public AI</div>
+        <div class="dd-body">Real client names · company financials · internal case files · employee data · contract terms · anything marked confidential.</div>
+      </div>
+      <div class="dd-card do">
+        <div class="dd-head do"><div class="ex-dot good"></div>Always use instead</div>
+        <div class="dd-body">Your role · a generic situation description · anonymised scenarios · hypothetical examples that carry the structure of your problem — without the sensitive content.</div>
+      </div>
+    </div>
+
+    <div class="principle-box">
+      <p>Give AI <strong>enough to understand your situation.</strong><br>Never enough to <strong>identify anyone in it.</strong></p>
+    </div>
+
+  </div>
+
+  <!-- ENDING -->
+  <div class="ending">
+    <div class="ending-kicker">In the age of AI</div>
+    <div class="triad">
+      <div class="triad-item">
+        <div class="triad-word">Answers</div>
+        <div class="triad-sub">are everywhere</div>
+      </div>
+      <div class="triad-item">
+        <div class="triad-word">Good Questions</div>
+        <div class="triad-sub">are rare</div>
+      </div>
+      <div class="triad-item">
+        <div class="triad-word">Secure Thinking</div>
+        <div class="triad-sub">is priceless</div>
+      </div>
+    </div>
+    <div class="ending-quote">AI doesn't replace expertise. It amplifies it — for better or for worse.</div>
+    <div class="ending-punchline">Learn to ask better — or you'll automate your own mistakes.</div>
+  </div>
+
+  <!-- CTA -->
+  <div class="cta-block">
+    <div class="cta-label">💬 Join the conversation</div>
+    <div class="cta-text">If you work with sensitive data — have you ever almost pasted something into a public AI tool… and stopped at the last second? Or didn't? The conversation matters more than you think.</div>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="footer">
+    <div class="footer-author">
+      <strong>Zied Sakouhi</strong><br>
+      Financial Crime Analyst · OSINT Specialist · Founder, UNECTOOLS<br>
+      Tunis, Tunisia · Open to UK / EU relocation
+    </div>
+    <div class="hashtags">
+      <span class="tag">#AILiteracy</span>
+      <span class="tag">#ArtificialIntelligence</span>
+      <span class="tag">#DataPrivacy</span>
+      <span class="tag">#Cybersecurity</span>
+      <span class="tag">#FinancialCrime</span>
+      <span class="tag">#OSINT</span>
+      <span class="tag">#Compliance</span>
+      <span class="tag">#CriticalThinking</span>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>
